@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="boundedContext.global.base.Rq" %>
 <!-- 나중에 다시 설정 -> 에디터 -> 파일 타입 -> HTMl에서 *.jsp, *.jspf 지워줘. -->
-<%
-    int dan = Integer.parseInt(request.getParameter("dan"));
-    int limit = Integer.parseInt(request.getParameter("limit"));
 
-String name = "홍길동";
-int age = 10;
+<%
+Rq rq = new Rq(request, response);
+    int dan = rq.getIntParam("dan", 9);
+    int limit = rq.getIntParam("limit", 9);
 %>
 
 <h1><%=dan%>단</h1>
@@ -14,22 +14,5 @@ int age = 10;
     <div><%=dan%> * <%=i%> = <%=dan * i%></div>
 <%  } %>
 
-<!-- 테스트 -->
-<% if(age >= 20) { %>
-<div>성인입니다.</div>
-<% } else { %>
-<div>미성년자입니다.</div>
-<% } %>
 
-<h1>
-    <% out.println(age + "살 입니다."); %>
-</h1>
-
-<h1>
-    <%=age%>살 입니다.
-</h1>
-
-<h1>
-    10살 입니다.
-</h1>
 
